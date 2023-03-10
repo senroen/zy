@@ -1,0 +1,18 @@
+
+1.你本地创建了一个项目
+2.进入到项目中，右击选择git bash
+3.git init 是初始化
+4.git config --global user.name "你的名字" 全局设置用户名和密码
+   git config --global user.email  "你的邮箱"
+   git config --global credential.helper store 保存起来
+5.ssh-keygen -t rsa -C “982590941@qq.com” 
+生成密钥 为了有权限操作远程仓库
+6.git remote add origin（自己取名字，本地仓库名） 仓库地址
+连接远程仓库 注意：要用仓库的ssh的地址
+7.git add . 管理所有的文件
+如果提示用户对不上，git config --global --add safe.directory C:/Users/zx-hcb-512/Desktop/vue-test/test
+8.git commit -m "版本的说明"
+提交到本地的暂缓区
+9.git push 本地仓库名字 master
+推送到远程仓库的哪个支流
+git push 上次本地仓库名 master

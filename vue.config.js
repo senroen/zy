@@ -1,11 +1,13 @@
-// const { defineConfig } = require("@vue/cli-service");
-
-const ElementPlus = require('unplugin-element-plus/webpack').default;
+const { defineConfig } = require("@vue/cli-service");
+const ElementPlus = require('unplugin-element-plus/webpack');
 // const AutoImport = require('unplugin-auto-import/webpack')
 // const Components = require('unplugin-vue-components/webpack')
 // const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
 module.exports = defineConfig({
   transpileDependencies: true,
+  configureWebpack:{
+    Plugins:[ElementPlus()],
+  },
     // 基本路径
     publicPath: process.env.NODE_ENV === 'production' ? '' : './',
     // 输出文件目录
