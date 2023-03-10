@@ -18,7 +18,7 @@ module.exports = defineConfig({
      * webpack配置,see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
      **/
     chainWebpack: (config) => {},
-    configureWebpack: (config) => {},
+    // configureWebpack: (config) => {},
     // 生产环境是否生成 sourceMap 文件
     productionSourceMap: false,
   //css
