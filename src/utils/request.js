@@ -13,9 +13,23 @@ service.interceptors.request.use(function(config){
 })
 
 service.interceptors.response.use(function(response){
-    return response
+    const data  = response.data;
+    if(data.resCode===0){
+        return Promise.resolve(data)
+    }else{
+        ElMessage.error({
+            message:data.message
+        })
+        return Promise.reject(data)
+    }
 },function(error){
-    return Promise.reject(error)
+    const errorData = JSON.parse(error.request.responsee)
+    if(errorData.message){
+        ElMessage.error({
+            message:errorData.message
+        })
+    }
+    return Promise.reject(errorData)
 })
 
 export default service;

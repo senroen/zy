@@ -1,10 +1,26 @@
 import service from "@/utils/request";
 
-export function Getcode(date){
+export function GetCode(data){
     return service.request({
         method:"post",
         url:"/getCode/",
-        date
+        data
+    })
+
+}
+export function Register(data){
+    return service.request({
+        method:"post",
+        url:"/register/",
+        data
+    })
+
+}
+export function Login(data={}){
+    return service.request({
+        method:"post",
+        url:"/login/",
+        data
     })
 
 }
