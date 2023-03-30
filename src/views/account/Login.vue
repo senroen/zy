@@ -72,7 +72,8 @@
 <script>
 import { reactive,toRefs,onBeforeUnmount,getCurrentInstance } from 'vue';
 import { validate_email,validate_password,validate_code} from '../../utils/validate';
-import { GetCode,ErrorHttp,Register ,Login} from '../../api/common';
+import { GetCode,} from '../../api/common';
+import {Login,Register}from"../../api/account"
 import  sha1  from 'js-sha1';
 import { ElMessage } from 'element-plus';
 export default{
