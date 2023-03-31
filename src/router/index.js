@@ -40,7 +40,8 @@ const routes = [
     path: "/home",
     name: "Home",
     meta:{
-      title:"控制台"
+      title:"控制台",
+      icon:"home"
     },
     component: () =>import("../Layout/Index.vue"),
     children:[
@@ -58,7 +59,8 @@ const routes = [
     path: "/news",
     name: "news",
     meta:{
-      title:"信息管理"
+      title:"信息管理",
+      icon:"YY_information"
     },
     component: () =>import("../Layout/Index.vue"),
     children:[
@@ -92,7 +94,8 @@ const routes = [
     path: "/user",
     name: "User",
     meta:{
-      title:"用户管理"
+      title:"用户管理",
+      icon:"user"
     },
     component: () =>import("../Layout/Index.vue"),
     children:[
