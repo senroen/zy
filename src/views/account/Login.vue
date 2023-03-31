@@ -72,26 +72,29 @@
 <script>
 import { reactive,toRefs,onBeforeUnmount,getCurrentInstance } from 'vue';
 import { validate_email,validate_password,validate_code} from '../../utils/validate';
-import { GetCode,} from '../../api/common';
-import {Login,Register}from"../../api/account"
+import { GetCode } from '../../api/common';
+import { Login,Register } from "../../api/account";
 import  sha1  from 'js-sha1';
-import { ElMessage } from 'element-plus';
+import {useStore} from 'vuex';
 export default{
     setup(props, { root }){
         const {proxy} = getCurrentInstance()
+        const store = useStore();
         const submitForm = ()=>{
                 proxy.$refs.account_from.validate((valid)=>{
-                    if(!valid){
-                        alert('表单校验不通过')
-                        return false
-                    }
+                if(valid){
+                    // data.current_menu==="login"?login():register();
                     return true
+                }else{
+                    alert('表单校验不通过')
+                    return false
+                }
             })
         }
         const zz = ()=>{
-            if (submitForm()&&data.current_menu==="login"){
+            if(submitForm && data.current_menu==="login"){
                 login()
-            }else{
+            }else if(submitForm && data.current_menu==="register"){
                 register()
             }
         }
@@ -102,7 +105,8 @@ export default{
                 code:data.form.code
             }
             data.data_submit_button_loading = true;
-            Login(data_post).then(response=>{
+            store.dispatch("app/loadAction",data_post).then(response=>{
+            // Login(data_post).then(response=>{
                 ElMessage.success({
                     message:response.message
                 })
@@ -205,7 +209,7 @@ export default{
             code_button_disable:false,//true才是阻拦
             code_button_text:"获取验证码",
             code_button_timer:null,
-            data_submit_button:false,
+            data_submit_button:true,
             data_submit_button_loading:false
         })
         const toggleMenu = ((type)=>{
