@@ -13,7 +13,10 @@
     import { useStore } from 'vuex';
     export default{
         setup(){
-            const store =useStore();
+            const cookie_value = document.cookie.split(";").forEach((key,value)=>{
+                key.split("=").map()
+            })
+            const store =useStore();//多一层少一层
             const {state} = useStore();
             const value =state.app.count
             const value_store= store.state.app.count

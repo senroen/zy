@@ -1,5 +1,8 @@
 import {Login}from"../../api/account"
-const state = {count:100}
+const state = {
+    count:100,
+    collapse:false
+}
 const getters = {
     getCount: (state)=>{
         return state.count+10
@@ -15,6 +18,9 @@ const mutations ={
     },
     SET_TEXT(state,payload){
         state.text = payload
+    },
+    SET_COLLAPSE(state){
+        state.collapse =!state.collapse
     }
 } 
 //更新
