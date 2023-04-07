@@ -1,7 +1,7 @@
 import {Login}from"../../api/account"
 const state = {
     count:100,
-    collapse:false
+    collapse:JSON.parse(sessionStorage.getItem('collapse'))||false
 }
 const getters = {
     getCount: (state)=>{
@@ -21,6 +21,8 @@ const mutations ={
     },
     SET_COLLAPSE(state){
         state.collapse =!state.collapse
+        sessionStorage.setItem('collapse',JSON.stringify(state.collapse))
+        // localStorage.setItem('zz',JSON.stringify(state.collapse))
     }
 } 
 //更新
