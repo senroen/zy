@@ -6,7 +6,7 @@
   </nav>
   <router-view />
   <el-button type="primary">主要按钮</el-button> -->
-  <router-view />
+  <router-view />              
 </template>
 
 <style lang="scss">

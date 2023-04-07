@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import "./registerServiceWorker";
+import '@r/permit';
 import router from "./router";
 import store from "./store";
 import axios from "axios";

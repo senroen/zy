@@ -76,6 +76,7 @@ import { GetCode } from '../../api/common';
 import { Login,Register } from "../../api/account";
 import  sha1  from 'js-sha1';
 import {useStore} from 'vuex';
+import router from '@/router';
 export default{
     setup(props, { root }){
         const {proxy} = getCurrentInstance()
@@ -110,6 +111,7 @@ export default{
                 ElMessage.success({
                     message:response.message
                 })
+                router.push({path:"/console"})
                 reset()
             }).catch(error=>{
                 data.data_submit_button_loading = false;
