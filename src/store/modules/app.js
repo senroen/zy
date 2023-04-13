@@ -1,10 +1,10 @@
-import {Login}from"../../api/account"
-import {setToken,setUserName}from'@/utils/cookies'
+import {Login,Logout}from"../../api/account"
+import {setToken,setUserName,getToken,getUserName,delToken,delUserName}from'@/utils/cookies'
 const state = {
     count:100,
     collapse:JSON.parse(sessionStorage.getItem('collapse'))||false,
-    token:'',
-    username:'',
+    token:'' || getToken(),
+    username:''|| getUserName(),
 }
 const getters = {
     getCount: (state)=>{
@@ -55,7 +55,21 @@ const actions ={
                 reject(error)
             })
         })
+    },
+    LogoutAction({commit}){
+        return new Promise((resolve,reject)=>{
+            Logout().then((response)=>{
+                delToken()
+                delUserName()
+                commit('SET_TOKEN','')
+                commit('SET_USERNAME','')
+                resolve(response)
+            }).catch(error=>{
+                reject(error)
+            })
+        })
     }
+
 } 
 export default ({
   namespaced:true,//限定在命名模块间

@@ -9,9 +9,9 @@
             <div class="user-info">
                 <div class="face-info">
                     <img src="../assets/logo-min.png" alt="982590941@qq.com">
-                    <span class="name">982590941@qq.com</span>
+                    <span class="name">{{username}}</span>
                 </div>
-                <span class="logout">
+                <span class="logout" @click="handLogot">
                     <svg-icon iconName="logout" className="icon-logout"></svg-icon>
                 </span>
             </div>
@@ -60,13 +60,34 @@
 
 <script>
     import { useStore } from 'vuex';
+    import {ref} from 'vue';
+    import { useRouter } from 'vue-router';
+import { ElMessage } from 'element-plus';
     export default{
         setup(props){
             const store = useStore()
+            const { replace } =useRouter()
+            const username = ref(store.state.app.username)
             const switchAside = (()=>{
                 store.commit('app/SET_COLLAPSE')
             })
-            return{switchAside}
+            const handLogot =(()=>{
+                ElMessageBox.confirm('确定退出管理后台','提示',{
+                    confirmButtonText:'确定',
+                    cancelButtonText:'取消',
+                    type:'warning'
+                }).then(()=>{
+                    store.dispatch("app/LogoutAction").then(response=>{
+                        ElMessage.success({
+                            message:response.message
+                        })
+                        replace({
+                            name:'Login'
+                        })
+                    })
+                }).catch(error=>{})
+            })
+            return{switchAside,username,handLogot}
         }
     }
 </script>
