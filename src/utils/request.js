@@ -38,7 +38,15 @@ service.interceptors.response.use(function(response){
             message:errorData.message
         })
     }
+    if(errorData.resCode=1010){
+        router.replace({
+            name:"Login"
+        })
+        delToken()
+        delUserName()
+    }
     return Promise.reject(errorData)
 })
+
 
 export default service;
